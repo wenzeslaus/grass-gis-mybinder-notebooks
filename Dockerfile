@@ -54,6 +54,7 @@ RUN apt-get update \
         imagemagick \
         p7zip \
         subversion \
+        ca-certificates \
     && apt-get autoremove \
     && apt-get clean
 
@@ -80,6 +81,10 @@ RUN svn checkout -r 69986 https://svn.osgeo.org/grass/grass/trunk grass \
 
 # enable simple grass command regardless of version number
 RUN ln -s /usr/local/bin/grass* /usr/local/bin/grass
+
+# certificates needed to make curl work
+RUN mkdir -p /etc/pki/tls/certs
+RUN cp /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 
 # user name from github.com/andrewosh/example-dockerfile
 # variable names is from Jupyer project
