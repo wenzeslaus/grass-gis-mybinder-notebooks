@@ -16,7 +16,6 @@ RUN apt-get update \
         flex \
         g++ \
         gettext \
-        libblas-dev \
         libbz2-dev \
         libcairo2-dev \
         libfftw3-dev \
@@ -76,7 +75,6 @@ RUN svn checkout -r 69986 https://svn.osgeo.org/grass/grass/trunk grass \
         --with-opengl-libs=/usr/include/GL \
         --with-freetype=yes --with-freetype-includes="/usr/include/freetype2/" \
         --with-sqlite=yes \
-        --with-liblas=yes --with-liblas-config=/usr/bin/liblas-config \
     && make && make install && ldconfig
 
 # enable simple grass command regardless of version number
