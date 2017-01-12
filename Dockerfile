@@ -85,9 +85,6 @@ RUN ln -s /usr/local/bin/grass* /usr/local/bin/grass
 # variable names is from Jupyer project
 ENV NB_USER main
 
-# create a user
-RUN useradd -m -U $NB_USER
-
 USER $NB_USER
 
 WORKDIR /home/$NB_USER
