@@ -102,7 +102,8 @@ RUN mkdir -p /home/$NB_USER/grassdata \
 
 WORKDIR /home/$NB_USER/work
 
-COPY notebooks/* ./
+COPY geospatial-modeling-course ./geospatial-modeling-course
+COPY python-grass-addon ./python-grass-addon
 
 # there is some problem or bug with permissions
 USER root
