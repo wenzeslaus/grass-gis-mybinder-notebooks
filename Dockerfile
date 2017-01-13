@@ -61,7 +61,7 @@ RUN apt-get update \
 # install GRASS GIS
 # using a specific revision, otherwise we can't apply the path safely
 WORKDIR /usr/local/src
-RUN svn checkout -r 69986 https://svn.osgeo.org/grass/grass/trunk grass \
+RUN svn checkout https://svn.osgeo.org/grass/grass/trunk grass \
     && cd grass \
     &&  ./configure \
         --enable-largefile=yes \
@@ -76,8 +76,7 @@ RUN svn checkout -r 69986 https://svn.osgeo.org/grass/grass/trunk grass \
         --with-opengl-libs=/usr/include/GL \
         --with-freetype=yes --with-freetype-includes="/usr/include/freetype2/" \
         --with-sqlite=yes \
-    && make; make install; ldconfig
-# temporal fails because ctypes cannot load libfortran required by lapack
+    && make && make install && ldconfig
 
 # enable simple grass command regardless of version number
 RUN ln -s /usr/local/bin/grass* /usr/local/bin/grass
